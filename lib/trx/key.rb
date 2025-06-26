@@ -5,7 +5,6 @@ module Trx
     attr_reader :private_key, :public_key
 
     def initialize(priv: nil)
-
       # Creates a new, randomized libsecp256k1 context.
       ctx = Secp256k1::Context.new context_randomization_bytes: SecureRandom.random_bytes(32)
 
@@ -63,7 +62,7 @@ module Trx
       prefixed_address_bytes = Utils.hex_to_bin(prefixed_address_hex)
       checksum = Utils.base58check(prefixed_address_bytes).hexdigest[0..7]
 
-      Base58.encode_hex(prefixed_address_hex + checksum)
+      Utils.base58_encode_hex(prefixed_address_hex + checksum)
     end
 
     def sign(blob)

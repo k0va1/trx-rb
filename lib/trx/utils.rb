@@ -29,7 +29,11 @@ module Trx
     end
 
     def base58_decode_hex(hex)
-      Base58.decode_hex(remove_hex_prefix(hex))
+      Base58.base58_to_binary(remove_hex_prefix(hex), :bitcoin).unpack1("H*")
+    end
+
+    def base58_encode_hex(string)
+      Base58.binary_to_base58([remove_hex_prefix(string)].pack("H*"), :bitcoin)
     end
 
     def sha256(value)
@@ -41,8 +45,9 @@ module Trx
 
     def is_hex?(str)
       return false unless str.is_a? String
+
       str = remove_hex_prefix str
-      str.match /\A[0-9a-fA-F]*\z/
+      str.match(/\A[0-9a-fA-F]*\z/)
     end
   end
 end

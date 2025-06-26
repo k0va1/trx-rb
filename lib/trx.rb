@@ -3,7 +3,7 @@
 require "digest/keccak"
 require "rlp"
 require "openssl"
-require "base58-alphabets"
+require "base58"
 require "rbsecp256k1"
 require "securerandom"
 require "faraday"

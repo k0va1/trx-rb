@@ -30,6 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rlp", "~> 0.7.3"
   spec.add_dependency "rbsecp256k1", "~> 6.0"
   spec.add_dependency "securerandom"
-  spec.add_dependency "base58-alphabets", "~> 1.0"
+  spec.add_dependency "base58", "~> 0.2.3"
   spec.add_dependency "activesupport", ">= 4.2"
 end
